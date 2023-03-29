@@ -2,10 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-# enter city name
-city = "lucknow"
-#
-creating url and requests instance
+# creating url and requests instance
 url = "https://search.yahoo.com/search?ei=UTF-8&fr=opera2&p=weather"
 html = requests.get(url)
 
