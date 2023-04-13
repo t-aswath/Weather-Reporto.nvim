@@ -1,5 +1,7 @@
 -- Define a function to fetch information from a URL
 
+local M = require ("weather")
+
 local defaults = {
         city = "Amsterdam",
         country = "Netherlands"
