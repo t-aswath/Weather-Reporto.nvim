@@ -22,8 +22,10 @@ Install weather.nvim from GitHub at github.com/t-aswath/weather.nvim and experie
 
 > Packer
 use ('t-aswath/Weather-Reporto.nvim')
+
 > Vim-plug
 Plug 't-aswath/Weather-Reporto.nvim'
+
 # How to use
 
 
