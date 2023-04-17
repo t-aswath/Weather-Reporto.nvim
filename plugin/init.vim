@@ -1,3 +1,3 @@
 lua << EOF
-require('myplugin').setup()
+require('weather').setup()
 EOF
