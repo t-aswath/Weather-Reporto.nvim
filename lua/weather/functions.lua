@@ -26,12 +26,12 @@ local function fetch(city,country)
       -- Add the extracted content to the parsed_data table
       table.insert(parsed_data, match)
     end
-    return parsed_data
+    return parsed_data[0] .. parsed_data[2]
+
   else
     print("Failed to fetch data from " .. url)
     return ''
   end
-    return parse_data
 end
 
 
