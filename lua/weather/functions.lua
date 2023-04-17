@@ -26,9 +26,7 @@ local function fetch(city,country)
       -- Add the extracted content to the parsed_data table
         parsed_data.condition = match
     end
-    for k , v in pairs(parsed_data) do
-        print(k,v)    
-    end
+
 
     return parsed_data
 

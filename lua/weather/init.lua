@@ -29,17 +29,12 @@ function content.setup(opts)
                           opts[k]=v
                 end
         end
-        for k,v in pairs(opts) do
-            content[k]=v
-        end
+
+        content.feed = fetchdata(opts.city,opts.country)
+        content.strfeed = content.feed.temp .. content.feed.condition
+
 
 end
-
-
-
-
-
-
 
 return content
 
