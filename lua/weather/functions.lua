@@ -19,18 +19,22 @@ local function fetch(city,country)
     -- Loop through the response and apply the regex pattern
     for match in response:gmatch(pattern) do
       -- Add the extracted content to the parsed_data table
-      table.insert(parsed_data, match)
+        parsed_data.temp = match
     end
 
     for match in response:gmatch(p2) do
       -- Add the extracted content to the parsed_data table
-      table.insert(parsed_data, match)
+        parsed_data.condition = match
     end
-    return parsed_data[1] .. parsed_data[2]
+    for k , v in pairs(parsed_data) do
+        print(k,v)    
+    end
+
+    return parsed_data
 
   else
     print("Failed to fetch data from " .. url)
-    return ''
+    return {'NaN','NaN'}
   end
 end
 

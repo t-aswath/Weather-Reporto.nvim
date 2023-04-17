@@ -29,9 +29,13 @@ function content.setup(opts)
                           opts[k]=v
                 end
         end
-        table.insert(content,fetchdata(opts.city,opts.country)) -- fetches data from ./functions.lua
+        for k,v in pairs(opts) do
+            content[k]=v
+        end
 
 end
+
+
 
 
 
