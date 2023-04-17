@@ -38,7 +38,7 @@ function content.setup(opts)
             arg.celtemp=tostring(math.floor((5/9)*(tonumber(arg.temp)-32)))
         end
         -- if celsius is true , it will concatenate celsius temp , else farenheit temp --
-        content.strfeed = arg.celtemp .. ((opts.celsius and "°C ") or "°F ") --.. nerdicons.cond(arg.condition)
+        content.strfeed = ((opts.celsius and arg.celtemp) or arg.temp)  .. ((opts.celsius and "°C ") or "°F ") --.. nerdicons.cond(arg.condition)
         content.kfeed = tostring(tonumber(arg.temp)+241) .. "K " --.. nerdicons.cond(arg.condition)
 
 
