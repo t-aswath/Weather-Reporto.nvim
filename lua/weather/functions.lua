@@ -32,7 +32,7 @@ local function fetch(city,country)
 
   else
     print("Failed to fetch data from " .. url)
-    return {'NaN','NaN'}
+    return {temp='NaN',condition='NaN'}
   end
 end
 
