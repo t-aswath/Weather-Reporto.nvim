@@ -1,25 +1,24 @@
-result.nerd_font = {
-  day = {
-    clear = '',
-    fog = '',
-    haze = '',
-    smoke = '',
+local day = {
+    Sunny = ' ',
+    fog = ' ',
+    haze = ' ',
+    smoke = ' ',
     tornado = '',
-    lightning = '',
-    snow = '',
-    cloudy_partly = '',
-    cloudy_cloudy = '',
-    rain_sprinkle = '',
-    rain_rain_wind = '',
-    rain_showers = '',
-    rain_wind = '',
-    rain_rain = '',
-    rain_thunderstorm = '',
-    hail = '',
-    wind_light = '',
-    wind_windy = ''
-  },
-  night = {
+    lightning = ' ',
+    snow = ' ',
+    cloudy_partly = ' ',
+    Cloudy = ' ',
+    rain_sprinkle = ' ',
+    rain_rain_wind = ' ',
+    rain_showers = ' ',
+    rain_wind = ' ',
+    rain_rain = ' ',
+    rain_thunderstorm = ' ',
+    hail = ' ',
+    wind_light = ' ',
+    wind_windy = ' '
+}
+local night = {
     clear = '',
     fog = '',
     haze = '', -- no haze, using fog
@@ -37,5 +36,25 @@ result.nerd_font = {
     hail = '',
     wind_light = '',
     wind_windy = '',
-  }
+}
+
+local cond = function (opt)
+    local val=""
+    local flag=1
+    for i in string.gmatch(opt,"%S+") do
+        if flag then
+            val=val .. i
+            flag=0
+        else
+            val=val .. "_" .. i
+        end
+    end
+    print(val)
+    return day[val]
+end
+
+return {
+    cond = cond,
+    day=day,
+    night=night,
 }

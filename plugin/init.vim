@@ -1,3 +1,3 @@
 lua<<EOF
-    require('weather').setup()
+--    require('weather').setup()
 EOF
