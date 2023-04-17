@@ -10,7 +10,7 @@ local fetchdata = require ("weather.functions")
 -- displaycityname  : bool
 --
 --
--- struct content
+-- struct contenot
 -- condition : string
 -- temp 
 
@@ -30,7 +30,6 @@ function content.setup(opts)
                 end
         end
         content.data=fetchdata(opts.city,opts.country)
-        print(vim.inspect(content))
 end
 
 return content

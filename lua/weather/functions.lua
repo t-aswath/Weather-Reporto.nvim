@@ -19,13 +19,11 @@ local function fetch(city,country)
     -- Loop through the response and apply the regex pattern
     for match in response:gmatch(pattern) do
       -- Add the extracted content to the parsed_data table
-      print(match)
       table.insert(parsed_data, match)
     end
 
     for match in response:gmatch(p2) do
       -- Add the extracted content to the parsed_data table
-      print(match)
       table.insert(parsed_data, match)
     end
     return parsed_data
