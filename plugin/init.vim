@@ -1,3 +1,3 @@
-lua << EOF
-require('weather').setup()
+lua<<EOF
+    require('weather').setup()
 EOF

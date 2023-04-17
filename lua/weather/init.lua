@@ -1,11 +1,24 @@
 -- Define a function to fetch information from a URL
 
-local M = require ("lua/functions")
+local fetchdata = require ("lua/weather/scrape-client")
+
+
+-- struct defaults
+-- city : string
+-- country : string
+-- celsius : bool
+-- displaycityname  : bool
+--
+--
+-- struct content
+-- condition : string
+-- temp 
 
 local defaults = {
         city = "Amsterdam",
         country = "Netherlands"
 }
+
 
 local content = {}
 
@@ -16,8 +29,10 @@ function content.setup(opts)
                           opts[k]=v
                 end
         end
-        print(vim.inspect(M.data))
+        content.data=fetchdata(opts.city,opts.country)
+        print(vim.inspect(content))
 end
-table.insert(content,M.fetch)
+
+return content
 
 

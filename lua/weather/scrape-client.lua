@@ -1,7 +1,7 @@
-local url = "https://search.yahoo.com/search?p=weather+".."chennai+".."india"
 
 -- Define a function to fetch information from a URL
-local function fetch(url)
+local function fetch(city,country)
+  local url = "https://search.yahoo.com/search?p=weather+".."chennai+".."india"
   -- Use the system function to make a curl request to the URL
   local handle = io.popen("curl -s " .. url)
   local response = handle:read("*a")
@@ -36,5 +36,4 @@ local function fetch(url)
 end
 
 -- Call the fetch function with the URL to fetch data
-local data = fetch(url)
-return data
+return fetch
