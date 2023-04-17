@@ -2,7 +2,7 @@
 --
 local fetchdata = require ("weather.functions")
 --local nerdicons = require("weather.devicons")
-local meth = require('math')
+local math = require('math')
 
 -- struct defaults
 -- city : string
