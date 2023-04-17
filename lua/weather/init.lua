@@ -1,6 +1,6 @@
 -- Define a function to fetch information from a URL
 
-local fetchdata = require ("lua/weather/scrape-client")
+local fetchdata = require ("weather/scrape-client")
 
 
 -- struct defaults
