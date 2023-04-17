@@ -1,40 +1,23 @@
-local url = "https://search.yahoo.com/search?p=weather+".."chennai+".."india"
-
 -- Define a function to fetch information from a URL
-local function fetch(url)
-  -- Use the system function to make a curl request to the URL
-  local handle = io.popen("curl -s " .. url)
-  local response = handle:read("*a")
-  handle:close()
-  -- Check if the request was successful (non-empty response)
-  if response and response ~= "" then
-    -- Return the response body (HTML content)
-    -- Define a regex pattern to match HTML tags and extract their content
-    local pattern = "<span%s+class=\"currTemp\">(.-)</span>"
-    local p2 = '<span%s+class=\"condition\">(.-)</span>'
 
-    -- Create a table to store the extracted data
-    local parsed_data = {}
+local M = require ("lua/functions")
 
-    -- Loop through the response and apply the regex pattern
-    for match in response:gmatch(pattern) do
-      -- Add the extracted content to the parsed_data table
-      print(match)
-      table.insert(parsed_data, match)
-    end
+local defaults = {
+        city = "Amsterdam",
+        country = "Netherlands"
+}
 
-    for match in response:gmatch(p2) do
-      -- Add the extracted content to the parsed_data table
-      print(match)
-      table.insert(parsed_data, match)
-    end
-    return parsed_data
-  else
-    print("Failed to fetch data from " .. url)
-    return ''
-  end
+local content = {}
+
+function content.setup(opts)
+        opts = opts or {}
+        for k , v in pairs( defaults ) do
+                if opts[k] == nil then
+                          opts[k]=v
+                end
+        end
+        print(vim.inspect(M.data))
 end
+table.insert(content,M.fetch)
 
--- Call the fetch function with the URL to fetch data
-local data = fetch(url)
-return data
+
