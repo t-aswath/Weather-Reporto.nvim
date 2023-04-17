@@ -1,6 +1,6 @@
--- Define a function to fetch information from a URL
-
-local fetchdata = require ("weather/scrape-client")
+-- Define a function to fetch information from a URLs
+--
+local fetchdata = require ("weather.functions")
 
 
 -- struct defaults
