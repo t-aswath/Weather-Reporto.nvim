@@ -1,7 +1,7 @@
 -- Define a function to fetch information from a URLs
 --
 local fetchdata = require("weather.functions")
---local nerdicons = require("weather.devicons")
+local icons = require("weather.devicons")
 local math = require("math")
 
 -- struct defaults
@@ -35,14 +35,15 @@ function content.setup(opts)
         local mg = function (x) return string.format("%s",x) end
 	local arg = content.feed
 	if arg.temp~=nil and arg.temp ~= " " then
-
+                local fweathercode = icons[tonumber(arg.condition)]
+                content.cond=fweathercode[2] .. " " .. fweathercode[1]
                 arg.celtemp = math.floor(tonumber(arg.temp))
 		arg.temp = math.floor((9 / 5) * (tonumber(arg.temp)))+ 32
 
 
 		-- if celsius is true , it will concatenate celsius temp , else farenheit temp --
-		content.strfeed = ((opts.celsius and mg(arg.celtemp)) or mg(arg.temp)) .. ((opts.celsius and "°C ") or "°F ") .. arg.condition
-		content.kfeed = tostring(arg.temp + 241) .. "K " .. arg.condition
+		content.strfeed = ((opts.celsius and mg(arg.celtemp)) or mg(arg.temp)) .. ((opts.celsius and "°C ") or "°F ")
+		content.kfeed = tostring(arg.temp + 241) .. "K "
 
 	else
 		content.feed = {

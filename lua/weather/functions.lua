@@ -1,6 +1,9 @@
 -- Define a function to fetch information from a URL
 local function fetch(lat, lon)
-	local url = "https://weather-api-support.vercel.app/?long=" .. lon .. "&lat=" .. lat
+        --lat and lon are numbers
+        local mg = function (x) return string.format("%s",x) end
+
+	local url = "https://weather-api-support.vercel.app/?long=" .. mg(lon) .. "&lat=" .. mg(lat) ..""
 	-- Use the system function to make a curl request to the URL
 	local handle = io.popen("curl -s " .. url)
 	local response = handle:read("*a")
@@ -32,6 +35,4 @@ local function fetch(lat, lon)
 	end
 end
 
--- local m = fetch("chennai", "india")
--- Call the fetch function with the URL to fetch data
 return fetch
