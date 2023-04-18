@@ -27,7 +27,7 @@ use ('t-aswath/Weather-Reporto.nvim')
 
 ### Vim-plug
 ```lua
-Plug 't-aswath/Weather-Reporto.nvim
+Plug 't-aswath/Weather-Reporto.nvim'
 ```
 
 # How to use
