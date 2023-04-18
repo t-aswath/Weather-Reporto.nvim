@@ -15,9 +15,9 @@ local math = require("math")
 -- condition : string
 -- temp
 
-local defaults = {
-	city = "Amsterdam",
-	country = "Netherlands",
+local defaults = { 
+	latitude = "84.2044",
+	longitude = "41.3220",
 	celsius = false,
 }
 
@@ -31,13 +31,19 @@ function content.setup(opts)
 		end
 	end
 
-	content.feed = fetchdata(opts.city, opts.country)
+	content.feed = fetchdata(opts.latitude, opts.longitude)
+        local mg = function (x) return string.format("%s",x) end
 	local arg = content.feed
-	if arg.temp and arg.temp ~= "NaN" then
-		arg.celtemp = tostring(math.floor((5 / 9) * (tonumber(arg.temp) - 32)))
+	if arg.temp~=nil and arg.temp ~= " " then
+
+                arg.celtemp = math.floor(tonumber(arg.temp))
+		arg.temp = math.floor((9 / 5) * (tonumber(arg.temp)))+ 32
+
+
 		-- if celsius is true , it will concatenate celsius temp , else farenheit temp --
-		content.strfeed = ((opts.celsius and arg.celtemp) or arg.temp) .. ((opts.celsius and "°C ") or "°F ") --.. nerdicons[tonumber(arg.condition)]--.. nerdicons.cond(arg.condition)
-		content.kfeed = tostring(tonumber(arg.temp) + 241) .. "K " .. arg.condition --.. nerdicons.weathercode[tonumber(arg.condition)]
+		content.strfeed = ((opts.celsius and mg(arg.celtemp)) or mg(arg.temp)) .. ((opts.celsius and "°C ") or "°F ") .. arg.condition
+		content.kfeed = tostring(arg.temp + 241) .. "K " .. arg.condition
+
 	else
 		content.feed = {
 			celtemp = "#E3",
@@ -47,5 +53,6 @@ function content.setup(opts)
 		content.strfeed = "#E3"
 	end
 end
+
 
 return content
