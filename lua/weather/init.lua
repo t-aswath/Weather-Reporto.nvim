@@ -36,7 +36,7 @@ function content.setup(opts)
 	local arg = content.feed
 	if arg.temp~=nil and arg.temp ~= " " then
                 local fweathercode = icons[tonumber(arg.condition)]
-                content.cond=fweathercode[2] .. " " .. fweathercode[1]
+                content.cond=fweathercode[2+tonumber(arg.isday)] .. " " .. fweathercode[1]
                 arg.celtemp = math.floor(tonumber(arg.temp))
 		arg.temp = math.floor((9 / 5) * (tonumber(arg.temp)))+ 32
 

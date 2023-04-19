@@ -36,7 +36,6 @@ local function fetch(lat, lon)
 			-- Add the extracted content to the parsed_data table
 			parsed_data.isday = match
 		end
-		print(parsed_data.isday)
 		return parsed_data
 	else
 		print("Failed to fetch data from " .. url)
