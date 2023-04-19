@@ -36,13 +36,13 @@ function content.setup(opts)
 	local arg = content.feed
 	if arg.temp~=nil and arg.temp ~= " " then
                 local fweathercode = icons[tonumber(arg.condition)]
-                content.cond=fweathercode[2+tonumber(arg.isday)] .. " " .. fweathercode[1]
+                content.cond=fweathercode[1]
                 arg.celtemp = math.floor(tonumber(arg.temp))
 		arg.temp = math.floor((9 / 5) * (tonumber(arg.temp)))+ 32
 
 
 		-- if celsius is true , it will concatenate celsius temp , else farenheit temp --
-		content.strfeed = ((opts.celsius and mg(arg.celtemp)) or mg(arg.temp)) .. ((opts.celsius and "°C ") or "°F ")
+		content.strfeed = fweathercode[3-tonumber(arg.isday)] .. " " .. ((opts.celsius and mg(arg.celtemp)) or mg(arg.temp)) .. ((opts.celsius and "°C ") or "°F ") .. " "
 		content.kfeed = tostring(arg.temp + 241) .. "K "
 
 	else
