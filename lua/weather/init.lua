@@ -48,7 +48,10 @@ function content.setup(opts)
 			.. ((opts.celsius and mg(arg.celtemp)) or mg(arg.temp))
 			.. ((opts.celsius and "°C ") or "°F ")
 			.. " "
-		content.kfeed = tostring(arg.temp + 241) .. "K "
+		content.kfeed = " " .. tostring(arg.temp + 241) .. "K "
+                        .. fweathercode[tonumber(arg.isday) + 2]
+                        .. " "
+                        .. fweathercode[1]
 	else
 		content.feed = {
 			celtemp = "#E3",
